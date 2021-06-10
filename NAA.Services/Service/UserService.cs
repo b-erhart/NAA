@@ -36,7 +36,7 @@ namespace NAA.Services.Service
         {
             using (var context = new NAAContext())
             {
-                return userDAO.GetUser(emailAddress, context);
+                return userDAO.GetUserByEmailAddress(emailAddress, context);
             }
         }
         public void AddUser(User user)
@@ -44,6 +44,23 @@ namespace NAA.Services.Service
             using (var context = new NAAContext())
             {
                 userDAO.AddUser(user, context);
+                context.SaveChanges();
+            }
+        }
+        public void UpdateUser(User user)
+        {
+            using (var context = new NAAContext())
+            {
+                User existingUser = userDAO.GetUser(user.UserId, context);
+                if (existingUser == null)
+                {
+                    userDAO.AddUser(user, context);
+                }
+                else
+                {
+                    userDAO.UpdateUser(user, context);
+                }
+                
                 context.SaveChanges();
             }
         }
