@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAA.Services", "NAA.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAA.Data", "NAA.Data\NAA.Data.csproj", "{4550F077-3F67-4DC2-8021-C51315C4B439}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAA.InServices", "NAA.InServices\NAA.InServices.csproj", "{5A6F86E1-ABFE-4582-BAF4-F9F0F444DAE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4550F077-3F67-4DC2-8021-C51315C4B439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4550F077-3F67-4DC2-8021-C51315C4B439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4550F077-3F67-4DC2-8021-C51315C4B439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A6F86E1-ABFE-4582-BAF4-F9F0F444DAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6F86E1-ABFE-4582-BAF4-F9F0F444DAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6F86E1-ABFE-4582-BAF4-F9F0F444DAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6F86E1-ABFE-4582-BAF4-F9F0F444DAE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
