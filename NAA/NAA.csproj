@@ -252,6 +252,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NAA.Data\NAA.Data.csproj">
+      <Project>{4550f077-3f67-4dc2-8021-c51315c4b439}</Project>
+      <Name>NAA.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NAA.Services\NAA.Services.csproj">
+      <Project>{1c409009-57cf-4908-93c6-f3e53a816ac5}</Project>
+      <Name>NAA.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
