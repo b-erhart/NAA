@@ -4,11 +4,8 @@
     ViewBag.Title = "Universities";
 }
 
-<h2>Index</h2>
+<h2>Universities</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -23,7 +20,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Show Courses", "Details", new { id=item.UniversityId })
+            @Html.ActionLink("Show Courses", "Index", new { name = item.Name, Controller = "Service"})
         </td>
     </tr>
 }

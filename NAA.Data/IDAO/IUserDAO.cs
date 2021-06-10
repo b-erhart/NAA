@@ -14,5 +14,6 @@ namespace NAA.Data.IDAO
         User GetUser(string userId, NAAContext context);
         User GetUserByEmailAddress(string emailAddress, NAAContext context);
         void AddUser(User user, NAAContext context);
+        void AddApplicationToCollection(NAAContext context, Application application);
     }
 }

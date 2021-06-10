@@ -19,6 +19,8 @@ namespace NAA.Services.Service
         {
             universityDAO = new UniversityDAO();
         }
+
+
         public IList<University> GetUniversities()
         {
             using (var context = new NAAContext())
@@ -32,6 +34,14 @@ namespace NAA.Services.Service
             using (var context = new NAAContext())
             {
                 return universityDAO.GetUniversity(context, id);
+            }
+        }
+        public void AddApplicationToCollection(Application application)
+        {
+            using (var context = new NAAContext())
+            {
+                universityDAO.AddApplicationToCollection(context, application);
+                context.SaveChanges();
             }
         }
     }

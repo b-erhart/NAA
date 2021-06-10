@@ -47,5 +47,13 @@ namespace NAA.Services.Service
                 context.SaveChanges();
             }
         }
+        public void AddApplicationToCollection(Application application)
+        {
+            using (var context = new NAAContext())
+            {
+                userDAO.AddApplicationToCollection(context, application);
+                context.SaveChanges();
+            }
+        }
     }
 }
