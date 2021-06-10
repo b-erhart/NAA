@@ -32,6 +32,11 @@ namespace NAA.Data.DAO
         {
             context.Users.Add(user);
         }
+
+        public void AddApplicationToCollection(NAAContext context, Application application)
+        {
+            context.Applications.Add(application);
+        }
         public void RemoveUser(User user, NAAContext context)
         {
             user = context.Users.Find(user.UserId);

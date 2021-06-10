@@ -11,6 +11,8 @@ namespace NAA.Data.DAO
 {
     public class UniversityDAO : IUniversityDAO
     {
+        
+
         public IList<University> GetUniversities(NAAContext context)
         {
             //Include(a => a.Applications)
@@ -20,6 +22,11 @@ namespace NAA.Data.DAO
         public University GetUniversity(NAAContext context, int id)
         {
             return context.Universities.Find(id);
+        }
+
+        public void AddApplicationToCollection(NAAContext context, Application application)
+        {
+            context.Applications.Add(application);
         }
     }
 }
