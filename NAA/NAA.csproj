@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\UniversityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,6 +238,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\University\Index.cshtml" />
+    <Content Include="Views\Service\CoursesSheffield.cshtml" />
+    <Content Include="Views\Service\CoursesSheffieldHallam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -258,6 +261,10 @@
     <ProjectReference Include="..\NAA.Data\NAA.Data.csproj">
       <Project>{4550f077-3f67-4dc2-8021-c51315c4b439}</Project>
       <Name>NAA.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NAA.InServices\NAA.InServices.csproj">
+      <Project>{5a6f86e1-abfe-4582-baf4-f9f0f444dae3}</Project>
+      <Name>NAA.InServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\NAA.Services\NAA.Services.csproj">
       <Project>{1c409009-57cf-4908-93c6-f3e53a816ac5}</Project>

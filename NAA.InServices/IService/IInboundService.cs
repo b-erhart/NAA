@@ -9,6 +9,7 @@ namespace NAA.InServices.IService
 {
     public interface IInboundService
     {
-        //IList<NAA.InServices.ProxyToSheffieldWebService.ShefCourse> GetShefCourses();
+        IList<NAA.InServices.ProxyToSheffieldWebService.ShefCourse> GetSheffieldCourses();
+        IList<NAA.InServices.ProxyToSheffieldHallamWebService.SHUCourse> getSheffieldHallamCourses();
     }
 }
