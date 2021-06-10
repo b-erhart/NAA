@@ -39,5 +39,13 @@ namespace NAA.Services.Service
                 return userDAO.GetUser(emailAddress, context);
             }
         }
+        public void AddUser(User user)
+        {
+            using (var context = new NAAContext())
+            {
+                userDAO.AddUser(user, context);
+                context.SaveChanges();
+            }
+        }
     }
 }

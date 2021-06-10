@@ -12,5 +12,6 @@ namespace NAA.Services.IService
         IList<User> GetUsers();
         User GetUser(string userId);
         User GetUserByEmailAddress(string emailAddress);
+        void AddUser(User user);
     }
 }

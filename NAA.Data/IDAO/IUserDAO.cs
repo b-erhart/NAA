@@ -13,5 +13,6 @@ namespace NAA.Data.IDAO
         IList<User> GetUsers(NAAContext context);
         User GetUser(string userId, NAAContext context);
         User GetUserByEmailAddress(string emailAddress, NAAContext context);
+        void AddUser(User user, NAAContext context);
     }
 }

@@ -28,5 +28,9 @@ namespace NAA.Data.DAO
 
             return user.ToList().First();
         }
+        public void AddUser(User user, NAAContext context)
+        {
+            context.Users.Add(user);
+        }
     }
 }

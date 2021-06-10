@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -79,6 +80,12 @@ namespace NAA.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    NAA.Services.IService.IUserService userService = new NAA.Services.Service.UserService();
+                    NAA.Data.Models.Domain.User naaUser = userService.GetUserByEmailAddress(model.Email);
+                    Session.Add("UserId", naaUser.UserId);
+                    var userManager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+                    IList<string> roles = userManager.GetRoles(naaUser.UserId);
+                    Session.Add("Roles", roles);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -156,6 +163,17 @@ namespace NAA.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+                    UserManager.AddToRole(user.Id, "User");
+                    NAA.Services.IService.IUserService userService = new NAA.Services.Service.UserService();
+                    NAA.Data.Models.Domain.User naaUser = new NAA.Data.Models.Domain.User()
+                    {
+                        UserId = user.Id,
+                        Name = model.Name,
+                        Email = model.Email
+                    };
+                    userService.AddUser(naaUser);
+                    Session.Add("UserId", user.Id);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -163,7 +181,7 @@ namespace NAA.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "University");
                 }
                 AddErrors(result);
             }
