@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<NAA.Data.Models.Domain.University>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Universities";
 }
 
 <h2>Index</h2>
@@ -23,9 +23,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UniversityId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UniversityId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UniversityId })
+            @Html.ActionLink("Show Courses", "Details", new { id=item.UniversityId })
         </td>
     </tr>
 }
