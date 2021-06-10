@@ -171,6 +171,7 @@
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\UniversityController.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,6 +244,7 @@
     <Content Include="Views\Service\CoursesSheffieldHallam.cshtml" />
     <Content Include="Views\Application\CreateApplication.cshtml" />
     <Content Include="Views\Application\Index.cshtml" />
+    <Content Include="Views\Profile\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

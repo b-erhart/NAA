@@ -86,6 +86,10 @@ namespace NAA.Controllers
                     var userManager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
                     IList<string> roles = userManager.GetRoles(naaUser.UserId);
                     Session.Add("Roles", roles);
+                    if (string.IsNullOrEmpty(naaUser.Address) || string.IsNullOrEmpty(naaUser.Phone))
+                    {
+                        return RedirectToAction("Create", "Profile");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -174,14 +178,14 @@ namespace NAA.Controllers
                     };
                     userService.AddUser(naaUser);
                     Session.Add("UserId", user.Id);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "University");
+                    return RedirectToAction("Create", "Profile");
                 }
                 AddErrors(result);
             }

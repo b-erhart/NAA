@@ -42,5 +42,15 @@ namespace NAA.Data.DAO
         {
             return context.Applications.ToList();
         }
+        public void RemoveUser(User user, NAAContext context)
+        {
+            user = context.Users.Find(user.UserId);
+            context.Users.Remove(user);
+        }
+        public void UpdateUser(User user, NAAContext context)
+        {
+            User dbUser = GetUser(user.UserId, context);
+            context.Entry(dbUser).CurrentValues.SetValues(user);
+        }
     }
 }
