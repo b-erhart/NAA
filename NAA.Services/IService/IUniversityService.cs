@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAA.Data.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace NAA.Services.IService
 {
-    interface IUniversityService
+    public interface IUniversityService
     {
+        IList<University> GetUniversities();
+        University GetUniversity(int id);
     }
 }
