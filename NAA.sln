@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAA", "NAA\NAA.csproj", "{F74A9237-D0CA-4823-B370-DA9E52334192}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAA.Services", "NAA.Services\NAA.Services.csproj", "{1C409009-57CF-4908-93C6-F3E53A816AC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAA.Data", "NAA.Data\NAA.Data.csproj", "{4550F077-3F67-4DC2-8021-C51315C4B439}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F74A9237-D0CA-4823-B370-DA9E52334192}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F74A9237-D0CA-4823-B370-DA9E52334192}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F74A9237-D0CA-4823-B370-DA9E52334192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C409009-57CF-4908-93C6-F3E53A816AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C409009-57CF-4908-93C6-F3E53A816AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C409009-57CF-4908-93C6-F3E53A816AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C409009-57CF-4908-93C6-F3E53A816AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4550F077-3F67-4DC2-8021-C51315C4B439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4550F077-3F67-4DC2-8021-C51315C4B439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4550F077-3F67-4DC2-8021-C51315C4B439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4550F077-3F67-4DC2-8021-C51315C4B439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
