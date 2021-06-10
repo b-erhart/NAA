@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace NAA.InServices.IService
 {
-    interface IInboundService
+    public interface IInboundService
     {
+        //IList<NAA.InServices.ProxyToSheffieldWebService.ShefCourse> GetShefCourses();
     }
 }
