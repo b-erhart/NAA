@@ -54,7 +54,7 @@ namespace NAA.Controllers
                 dbUser.Address = user.Address;
                 dbUser.Phone = user.Phone;
 
-                userService.UpdateUser(user);
+                userService.UpdateUser(dbUser);
 
                 return RedirectToAction("Index", "University");
             }
