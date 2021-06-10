@@ -37,5 +37,10 @@ namespace NAA.Data.DAO
         {
             context.Applications.Add(application);
         }
+
+        public IList<Application> GetApplications(NAAContext context)
+        {
+            return context.Applications.ToList();
+        }
     }
 }

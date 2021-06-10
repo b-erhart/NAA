@@ -19,7 +19,12 @@ namespace NAA.Controllers
             userService = new UserService();
             universityService = new UniversityService();
         }
-        // GET: Application
+        
+        public ActionResult Index()
+        {
+            return View(userService.GetApplications());
+        }
+
         public ActionResult CreateApplication(string course)
         {
             ViewBag.Course = course;

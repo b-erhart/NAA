@@ -242,6 +242,7 @@
     <Content Include="Views\Service\CoursesSheffield.cshtml" />
     <Content Include="Views\Service\CoursesSheffieldHallam.cshtml" />
     <Content Include="Views\Application\CreateApplication.cshtml" />
+    <Content Include="Views\Application\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

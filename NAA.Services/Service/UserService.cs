@@ -55,5 +55,13 @@ namespace NAA.Services.Service
                 context.SaveChanges();
             }
         }
+
+        public IList<Application> GetApplications()
+        {
+            using (var context = new NAAContext())
+            {
+                return userDAO.GetApplications(context);
+            }
+        }
     }
 }

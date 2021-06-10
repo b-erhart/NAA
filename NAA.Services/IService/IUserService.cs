@@ -14,5 +14,6 @@ namespace NAA.Services.IService
         User GetUserByEmailAddress(string emailAddress);
         void AddUser(User user);
         void AddApplicationToCollection(Application application);
+        IList<Application> GetApplications();
     }
 }
