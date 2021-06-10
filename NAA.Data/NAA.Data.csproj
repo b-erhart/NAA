@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\UniversityDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="IDAO\IUniversityDAO.cs" />
+    <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="Models\Domain\Application.cs" />
     <Compile Include="Models\Domain\University.cs" />
     <Compile Include="Models\Domain\User.cs" />
