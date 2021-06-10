@@ -13,6 +13,7 @@ namespace NAA.Data.DAO
     {
         public IList<University> GetUniversities(NAAContext context)
         {
+            //Include(a => a.Applications)
             return context.Universities.ToList();
         }
 

@@ -54,8 +54,8 @@
     <Compile Include="IService\IUniversityService.cs" />
     <Compile Include="IService\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\IUserService.cs" />
     <Compile Include="Service\UniversityService.cs" />
+    <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NAA.Data\NAA.Data.csproj">
