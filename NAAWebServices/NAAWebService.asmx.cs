@@ -29,9 +29,10 @@ namespace NAAWebServices
         {
             return applicationService.GetApplications(universityName);
         }
-        public string MakeOffer(string universityName, int applicationId, string offer, string statement, string teacherContact, string teacherReference)
+        [WebMethod]
+        public string MakeOffer(string universityName, int applicationId, string offer)
         {
-            return applicationService.MakeOffer(universityName, applicationId, offer, statement, teacherContact, teacherReference);
+            return applicationService.MakeOffer(universityName, applicationId, offer);
         }
     }
 }

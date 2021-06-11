@@ -16,10 +16,12 @@ namespace NAA.OutServices.Service
     {
         private IUniversityDAO universityDAO;
         private IUserDAO userDAO;
+        private IApplicationDAO applicationDAO;
         public ApplicationService()
         {
             universityDAO = new UniversityDAO();
             userDAO = new UserDAO();
+            applicationDAO = new ApplicationDAO();
         }
         public UniversityApplication[] GetApplications(string universityName)
         {
@@ -72,7 +74,7 @@ namespace NAA.OutServices.Service
             }
         }
 
-        public string MakeOffer(string universityName, int applicationId, string offer, string statement, string teacherContact, string teacherReference)
+        public string MakeOffer(string universityName, int applicationId, string offer)
         {
             using (var context = new NAAContext())
             {
@@ -128,9 +130,8 @@ namespace NAA.OutServices.Service
                         return "\"" + offer + "\" is not a valid value for offer. Only R (reject), P (pending), C (conditional) and U (unconditional) are allowed.";
                 }
 
-                applicationToMakeOffer.Statement = statement;
-                applicationToMakeOffer.TeacherContact = teacherContact;
-                applicationToMakeOffer.TeacherReference = teacherReference;
+                applicationDAO.UpdateApplication(context, applicationToMakeOffer);
+                context.SaveChanges();
 
                 return "Offer sent successfully.";
             }

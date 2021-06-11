@@ -10,6 +10,6 @@ namespace NAA.OutServices.IService
     public interface IApplicationService
     {
         UniversityApplication[] GetApplications(string universityName);
-        string MakeOffer(string universityName, int applicationId, string offer, string statement, string teacherContact, string teacherReference);
+        string MakeOffer(string universityName, int applicationId, string offer);
     }
 }

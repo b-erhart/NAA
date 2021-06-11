@@ -35,5 +35,10 @@ namespace NAA.Data.DAO
             application.Firm = true;
             context.Entry(old).CurrentValues.SetValues(application);
         }
+        public void UpdateApplication(NAAContext context, Application application)
+        {
+            Application old = GetApplication(context, application.ApplicationId);
+            context.Entry(old).CurrentValues.SetValues(application);
+        }
     }
 }

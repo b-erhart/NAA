@@ -17,5 +17,6 @@ namespace NAA.Data.IDAO
         Application GetApplication(NAAContext context, int applicationId);
 
         void ConfirmApplication(NAAContext context, int applicationId);
+        void UpdateApplication(NAAContext context, Application application);
     }
 }
