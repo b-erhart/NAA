@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace NAA.Data.DAO
     {
         public IList<User> GetUsers(NAAContext context)
         {
-            return context.Users.ToList();
+            return context.Users.Include(u => u.Applications).ToList();
         }
         public User GetUser(string userId, NAAContext context)
         {

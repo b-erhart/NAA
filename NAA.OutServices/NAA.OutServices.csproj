@@ -52,12 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IService\IApplicationService.cs" />
+    <Compile Include="Models\UniversityApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ApplicationService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\NAA.Data\NAA.Data.csproj">
       <Project>{4550f077-3f67-4dc2-8021-c51315c4b439}</Project>

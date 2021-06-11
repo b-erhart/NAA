@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NAA.Data.Models.Domain;
+using NAA.OutServices.Models;
 
 namespace NAA.OutServices.IService
 {
     public interface IApplicationService
     {
-        Application[] GetApplications(string universityName);
+        UniversityApplication[] GetApplications(string universityName);
+        string MakeOffer(string universityName, int applicationId, string offer, string statement, string teacherContact, string teacherReference);
     }
 }

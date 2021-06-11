@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-using NAA.Data.Models.Domain;
+using NAA.OutServices.Models;
 using NAA.OutServices.IService;
 using NAA.OutServices.Service;
 
@@ -25,9 +25,13 @@ namespace NAAWebServices
             applicationService = new ApplicationService();
         }
         [WebMethod]
-        public Application[] GetApplications(string universityName)
+        public UniversityApplication[] GetApplications(string universityName)
         {
             return applicationService.GetApplications(universityName);
+        }
+        public string MakeOffer(string universityName, int applicationId, string offer, string statement, string teacherContact, string teacherReference)
+        {
+            return applicationService.MakeOffer(universityName, applicationId, offer, statement, teacherContact, teacherReference);
         }
     }
 }
