@@ -8,12 +8,6 @@ using NAA.Models;
 using NAA.Services.Service;
 using NAA.Services.IService;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNetCore.Identity;
-using System.Globalization;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace NAA.Controllers
@@ -28,10 +22,7 @@ namespace NAA.Controllers
             context = new ApplicationDbContext();
             userService = new UserService();
         }
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
+
         public ActionResult GetUsers()
         {
             return View(userService.GetUsers());
@@ -91,6 +82,34 @@ namespace NAA.Controllers
                 }).ToList();
             ViewBag.Roles = roleList;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ManageUserRoles(string userName, string roleName)
+        {
+            ApplicationUser user = context.Users.Where
+                (u => u.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var idResult = um.AddToRole(user.Id, roleName);
+
+            var roleList = context.Roles.OrderBy
+                (r => r.Name).ToList().Select
+                (rr => new SelectListItem
+                {
+                    Value = rr.Name.ToString(),
+                    Text = rr.Name
+                }).ToList();
+            ViewBag.Roles = roleList;
+
+            var userList = context.Users.OrderBy
+                (u => u.UserName).ToList().Select
+                (uu => new SelectListItem
+                {
+                    Value = uu.UserName.ToString(),
+                    Text = uu.UserName
+                }).ToList();
+            ViewBag.Users = userList;
+            return View("ManageUserRoles");
         }
 
     }
