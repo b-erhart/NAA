@@ -57,6 +57,7 @@ namespace NAA.Services.Service
             using (var context = new NAAContext())
             {
                 applicationDAO.ConfirmApplication(context, applicationId);
+                context.SaveChanges();
             }
         }
     }
