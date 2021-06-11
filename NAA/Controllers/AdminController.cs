@@ -28,7 +28,10 @@ namespace NAA.Controllers
             context = new ApplicationDbContext();
             userService = new UserService();
         }
-
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
         public ActionResult GetUsers()
         {
             return View(userService.GetUsers());
