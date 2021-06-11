@@ -18,6 +18,7 @@ namespace NAA.Data.DAO
         }
         public User GetUser(string userId, NAAContext context)
         {
+            context.Users.Include(u => u.Applications).ToList();
             return context.Users.Find(userId);
         }
         public User GetUserByEmailAddress(string emailAddress, NAAContext context)

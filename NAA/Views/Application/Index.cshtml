@@ -4,13 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-@{bool Confirm = false; }
+@{bool Confirm = ViewBag.Confirm; }
 <h2>Index</h2>
 
 @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
 {
     <p class="text-warning">
-        @ViewBag.ErrorMessage
+        @ViewBag.ErrorMessage.ToString()
     </p>
 }
 
@@ -37,41 +37,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Statement)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherContact)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeacherReference)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Offer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Firm)
-            @if (item.Firm == true)
-            {
-                Confirm = true;
-            }
-        </td>
-        <td>
-            @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R") && !item.Offer.Equals("P") && !Confirm)
-            {
-                @Html.ActionLink("Confirm", "ConfirmApplication", new { applicationId = item.ApplicationId })
-            }
-            else if (string.IsNullOrEmpty(item.Offer))
-            {
-                @Html.ActionLink("Delete", "DeleteApplication", new { applicationId = item.ApplicationId })
-            }
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Statement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherReference)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Offer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firm)
+            </td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R") && !item.Offer.Equals("P") && !Confirm)
+                {
+                    @Html.ActionLink("Confirm", "ConfirmApplication", new { applicationId = item.ApplicationId })
+                }
+                else if (string.IsNullOrEmpty(item.Offer))
+                {
+                    @Html.ActionLink("Delete", "DeleteApplication", new { applicationId = item.ApplicationId })
+                }
+            </td>
+        </tr>
+
+    }
+    <p>
+        @Html.ActionLink("Create Application","Index", "University")
+    </p>
 
 </table>

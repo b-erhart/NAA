@@ -26,6 +26,17 @@ namespace NAA.Controllers
         {
             string userId = (string)Session["UserId"];
             User user = userService.GetUser(userId);
+            IList<Application> applications = userService.GetApplications(user);
+            bool confirm = false;
+            foreach (var item in applications)
+            {
+                if (item.Firm == true)
+                {
+                    confirm = true;
+                    break;
+                }
+            }
+            ViewBag.Confirm = confirm;
             userService.GetApplications(user);
 
             if (!string.IsNullOrEmpty(errorMessage))
@@ -59,7 +70,7 @@ namespace NAA.Controllers
                 int universityId = (int)Session["universityId"];
                 applicationService.AddApplication(application,userId,universityId);
 
-                return RedirectToAction("Index", "University");
+                return RedirectToAction("Index", "Application");
             }
             catch
             {

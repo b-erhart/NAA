@@ -23,6 +23,11 @@ namespace NAA.Controllers
             userService = new UserService();
         }
 
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
         public ActionResult GetUsers()
         {
             return View(userService.GetUsers());
@@ -35,18 +40,12 @@ namespace NAA.Controllers
         [HttpPost]
         public ActionResult DeleteUser(User user)
         {
-            try
-            {
+
                 ApplicationUser dbUser = context.Users.Find(user.UserId);
                 context.Users.Remove(dbUser);
                 context.SaveChanges();
                 userService.DeleteUser(user.UserId);
                 return RedirectToAction("GetUsers");
-            }
-            catch (Exception)
-            {
-                return View();
-            }
         }
 
         public ActionResult AddRole()
