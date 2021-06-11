@@ -9,4 +9,8 @@
             {
                 @Html.AntiForgeryToken()
     @Html.ValidationSummary(true);
+    <p>
+        User UserName: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users)
+        Roll : @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles)
+    </p><input type="submit"value="Save" />
 }
