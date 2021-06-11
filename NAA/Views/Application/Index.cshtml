@@ -54,9 +54,9 @@
             @Html.DisplayFor(modelItem => item.Offer)
         </td>
         <td>
-            @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R"))
+            @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R") && !item.Offer.Equals("P"))
             {
-                @Html.ActionLink("Confirm", "Confirm", new { id = item.ApplicationId })
+                @Html.ActionLink("Confirm", "ConfirmApplication", new { applicationId = item.ApplicationId })
             }
             else if (string.IsNullOrEmpty(item.Offer))
             {

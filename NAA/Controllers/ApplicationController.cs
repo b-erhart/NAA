@@ -99,7 +99,7 @@ namespace NAA.Controllers
         public ActionResult ConfirmApplication(int applicationId)
         {
             Application application = applicationService.GetApplication(applicationId);
-            if (!string.IsNullOrEmpty(application.Offer) && !application.Offer.Equals("R"))
+            if (!string.IsNullOrEmpty(application.Offer) && !application.Offer.Equals("R") && !application.Offer.Equals("P"))
             {
                 return View(application);
             }
