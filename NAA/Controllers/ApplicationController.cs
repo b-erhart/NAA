@@ -13,22 +13,41 @@ namespace NAA.Controllers
     {
         private IUserService userService;
         private IUniversityService universityService;
+        private IApplicationService applicationService;
 
         public ApplicationController()
         {
             userService = new UserService();
             universityService = new UniversityService();
+            applicationService = new ApplicationService();
         }
         
-        public ActionResult Index()
+        public ActionResult Index(string errorMessage)
         {
-            return View(userService.GetApplications());
+            string userId = (string)Session["UserId"];
+            User user = userService.GetUser(userId);
+            userService.GetApplications(user);
+
+            if (!string.IsNullOrEmpty(errorMessage))
+                ViewBag.ErrorMessage = errorMessage;
+
+            return View(userService.GetApplications(user));
         }
 
         public ActionResult CreateApplication(string course)
         {
             ViewBag.Course = course;
-            return View();
+            string userId = (string)Session["UserId"];
+            User user = userService.GetUser(userId);
+            IList<Application> applications = userService.GetApplications(user);
+            if (applications.Count < 5)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", new { errorMessage = "Only 5 Applications allowed" });
+            }
         }
 
         [HttpPost]
@@ -36,8 +55,38 @@ namespace NAA.Controllers
         {
             try
             {
-                userService.AddApplicationToCollection(application);
-                universityService.AddApplicationToCollection(application);
+                string userId = (string)Session["UserId"];
+                int universityId = (int)Session["universityId"];
+                applicationService.AddApplication(application,userId,universityId);
+
+                return RedirectToAction("Index", "University");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult DeleteApplication(int applicationId)
+        {
+            Application application = applicationService.GetApplication(applicationId);
+            if (application.Offer.Equals(""))
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", new { errorMessage = "Application has already an Offer" });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteApplication(Application application)
+        {
+            try
+            {
+                string userId = (string)Session["UserId"];
+                applicationService.DeleteApplication(application, userId);
 
                 return RedirectToAction("Index", "University");
             }

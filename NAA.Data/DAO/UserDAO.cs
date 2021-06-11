@@ -33,14 +33,14 @@ namespace NAA.Data.DAO
             context.Users.Add(user);
         }
 
-        public void AddApplicationToCollection(NAAContext context, Application application)
+        public void AddApplicationToCollection(NAAContext context, Application application, string userId)
         {
-            context.Applications.Add(application);
+            context.Users.Find(userId).Applications.Add(application);
         }
 
-        public IList<Application> GetApplications(NAAContext context)
+        public IList<Application> GetApplications(NAAContext context, User user)
         {
-            return context.Applications.ToList();
+            return context.Users.Find(user.UserId).Applications.ToList();
         }
         public void RemoveUser(User user, NAAContext context)
         {
@@ -51,6 +51,11 @@ namespace NAA.Data.DAO
         {
             User dbUser = GetUser(user.UserId, context);
             context.Entry(dbUser).CurrentValues.SetValues(user);
+        }
+
+        public void RemoveApplicationFromCollection(NAAContext context, string userId, Application application)
+        {
+            context.Users.Find(userId).Applications.Remove(application);
         }
     }
 }

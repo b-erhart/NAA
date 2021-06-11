@@ -60,24 +60,16 @@ namespace NAA.Services.Service
                 {
                     userDAO.UpdateUser(user, context);
                 }
-                
-                context.SaveChanges();
-            }
-        }
-        public void AddApplicationToCollection(Application application)
-        {
-            using (var context = new NAAContext())
-            {
-                userDAO.AddApplicationToCollection(context, application);
+
                 context.SaveChanges();
             }
         }
 
-        public IList<Application> GetApplications()
+        public IList<Application> GetApplications(User user)
         {
             using (var context = new NAAContext())
             {
-                return userDAO.GetApplications(context);
+                return userDAO.GetApplications(context, user);
             }
         }
     }

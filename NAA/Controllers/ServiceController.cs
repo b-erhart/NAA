@@ -16,21 +16,23 @@ namespace NAA.Controllers
             service = new InboundService();
         }
         // GET: Service
-        public ActionResult Index(string name)
+        public ActionResult Index(string name, int universityId)
         {
             if (name.Equals("Sheffield"))
-                return RedirectToAction("CoursesSheffieldHallam");
+                return RedirectToAction("CoursesSheffieldHallam", new { universityId = universityId });
             else if (name.Equals("Sheffield Hallam"))
-                return RedirectToAction("CoursesSheffield");
+                return RedirectToAction("CoursesSheffield", new { universityId = universityId });
             return RedirectToAction("Index", "University");
         }
-        public ActionResult CoursesSheffieldHallam()
+        public ActionResult CoursesSheffieldHallam(int universityId)
         {
+            Session["universityId"] = universityId;
             return View(service.getSheffieldHallamCourses());
         }
 
-        public ActionResult CoursesSheffield()
+        public ActionResult CoursesSheffield(int universityId)
         {
+            Session["universityId"] = universityId;
             return View(service.GetSheffieldCourses());
         }
     }

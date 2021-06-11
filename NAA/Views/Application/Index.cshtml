@@ -6,6 +6,12 @@
 
 <h2>Index</h2>
 
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <p class="text-warning">
+        @ViewBag.ErrorMessage
+    </p>
+}
 
 <table class="table">
     <tr>
@@ -49,6 +55,7 @@
         </td>
         <td>
             @Html.ActionLink("Confirm", "Confirm", new { id = item.ApplicationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
         </td>
         <td>
         </td>

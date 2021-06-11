@@ -22,9 +22,22 @@ namespace NAA.Data.DAO
             return context.Universities.Find(id);
         }
 
-        public void AddApplicationToCollection(NAAContext context, Application application)
+        public void AddApplicationToCollection(NAAContext context, Application application, int universityKey)
         {
-            context.Applications.Add(application);
+            context.Universities.Find(universityKey).Applications.Add(application);
+        }
+
+        public void RemoveFromCollection(NAAContext context, Application application)
+        {
+            IList<University> universities = GetUniversities(context);
+            foreach (var item in universities)
+            {
+                if (context.Universities.Find(item.UniversityId).Applications.Contains(application))
+                {
+                    context.Universities.Find(item.UniversityId).Applications.Remove(application);
+                    return;
+                }
+            }
         }
         public IList<Application> GetApplications(NAAContext context, string universityName)
         {
