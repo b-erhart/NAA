@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 
+@{bool Confirm = false; }
 <h2>Index</h2>
 
 @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
@@ -55,9 +56,13 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Firm)
+            @if (item.Firm == true)
+            {
+                Confirm = true;
+            }
         </td>
         <td>
-            @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R") && !item.Offer.Equals("P"))
+            @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R") && !item.Offer.Equals("P") && !Confirm)
             {
                 @Html.ActionLink("Confirm", "ConfirmApplication", new { applicationId = item.ApplicationId })
             }

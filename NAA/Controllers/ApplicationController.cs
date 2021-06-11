@@ -98,8 +98,21 @@ namespace NAA.Controllers
 
         public ActionResult ConfirmApplication(int applicationId)
         {
+            string userId = (string)Session["UserId"];
+            User user = userService.GetUser(userId);
+            IList<Application> applications = userService.GetApplications(user);
+            bool confirm = false;
+            foreach (var item in applications)
+            {
+                if (item.Firm == true)
+                {
+                    confirm = true;
+                    break;
+                }
+            }
+
             Application application = applicationService.GetApplication(applicationId);
-            if (!string.IsNullOrEmpty(application.Offer) && !application.Offer.Equals("R") && !application.Offer.Equals("P"))
+            if (!string.IsNullOrEmpty(application.Offer) && !application.Offer.Equals("R") && !application.Offer.Equals("P") && !confirm)
             {
                 return View(application);
             }
