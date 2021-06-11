@@ -19,12 +19,21 @@ namespace NAA.Data.DAO
 
         public void DeleteApplication(NAAContext context, Application application)
         {
-            context.Applications.Remove(application);
+            Application delete = GetApplication(context, application.ApplicationId);
+            context.Applications.Remove(delete);
         }
 
         public Application GetApplication(NAAContext context, int applicationId)
         {
             return context.Applications.Find(applicationId);
+        }
+
+        public void ConfirmApplication(NAAContext context, int applicationId)
+        {
+            Application old = GetApplication(context, applicationId);
+            Application application = GetApplication(context, applicationId);
+            application.Firm = true;
+            context.Entry(old).CurrentValues.SetValues(application);
         }
     }
 }

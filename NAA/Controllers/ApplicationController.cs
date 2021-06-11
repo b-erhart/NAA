@@ -70,9 +70,9 @@ namespace NAA.Controllers
         public ActionResult DeleteApplication(int applicationId)
         {
             Application application = applicationService.GetApplication(applicationId);
-            if (application.Offer.Equals(""))
+            if (string.IsNullOrEmpty(application.Offer))
             {
-                return View();
+                return View(application);
             }
             else
             {
@@ -87,6 +87,34 @@ namespace NAA.Controllers
             {
                 string userId = (string)Session["UserId"];
                 applicationService.DeleteApplication(application, userId);
+
+                return RedirectToAction("Index", "University");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ConfirmApplication(int applicationId)
+        {
+            Application application = applicationService.GetApplication(applicationId);
+            if (!string.IsNullOrEmpty(application.Offer) && !application.Offer.Equals("R"))
+            {
+                return View(application);
+            }
+            else
+            {
+                return RedirectToAction("Index", new { errorMessage = "There is no offer for this application" });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmApplication(Application application)
+        {
+            try
+            {
+                applicationService.ConfirmApplication(application.ApplicationId);
 
                 return RedirectToAction("Index", "University");
             }

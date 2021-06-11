@@ -246,6 +246,8 @@
     <Content Include="Views\Application\Index.cshtml" />
     <Content Include="Views\Profile\Create.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Application\DeleteApplication.cshtml" />
+    <Content Include="Views\Application\ConfirmApplication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

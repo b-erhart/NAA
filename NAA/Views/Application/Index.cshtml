@@ -54,8 +54,15 @@
             @Html.DisplayFor(modelItem => item.Offer)
         </td>
         <td>
-            @Html.ActionLink("Confirm", "Confirm", new { id = item.ApplicationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
+            @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R"))
+            {
+                @Html.ActionLink("Confirm", "Confirm", new { id = item.ApplicationId })
+            }
+            else if (string.IsNullOrEmpty(item.Offer))
+            {
+            @Html.ActionLink("Delete", "DeleteApplication", new { applicationId = item.ApplicationId })
+            }
+
         </td>
         <td>
         </td>
