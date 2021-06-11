@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ApplicationDAO.cs" />
     <Compile Include="DAO\UniversityDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="IDAO\IApplicationDAO.cs" />
     <Compile Include="IDAO\IUniversityDAO.cs" />
     <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="Models\Domain\Application.cs" />

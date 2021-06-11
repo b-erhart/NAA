@@ -11,6 +11,5 @@ namespace NAA.Services.IService
     {
         IList<University> GetUniversities();
         University GetUniversity(int id);
-        void AddApplicationToCollection(Application application);
     }
 }

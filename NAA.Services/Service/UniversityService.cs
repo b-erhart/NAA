@@ -36,13 +36,5 @@ namespace NAA.Services.Service
                 return universityDAO.GetUniversity(context, id);
             }
         }
-        public void AddApplicationToCollection(Application application)
-        {
-            using (var context = new NAAContext())
-            {
-                universityDAO.AddApplicationToCollection(context, application);
-                context.SaveChanges();
-            }
-        }
     }
 }

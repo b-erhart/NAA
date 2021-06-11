@@ -12,6 +12,7 @@ namespace NAA.Data.IDAO
     {
         IList<University> GetUniversities(NAAContext context);
         University GetUniversity(NAAContext context, int id);
-        void AddApplicationToCollection(NAAContext context, Application application);
+        void AddApplicationToCollection(NAAContext context, Application application, int universityKey);
+        void RemoveFromCollection(NAAContext context, Application application);
     }
 }
