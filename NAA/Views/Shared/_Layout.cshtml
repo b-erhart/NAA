@@ -21,11 +21,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Universities", "Index", "University")</li>
-                    <li>@Html.ActionLink("Applications", "Index", "Application")</li>
-                    <!--<li>@Html.ActionLink("About", "About", "Home")</li>-->
-                    <!--<li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
-                    <li>@Html.ActionLink("Profile", "Edit", "Profile")</li>
+                    @if (!string.IsNullOrEmpty((string)Session["UserId"]) && string.IsNullOrEmpty(ViewBag.NoNavigation))
+                    {
+                        <li>@Html.ActionLink("Universities", "Index", "University")</li>
+                        <li>@Html.ActionLink("Applications", "Index", "Application")</li>
+                        <!--<li>@Html.ActionLink("About", "About", "Home")</li>-->
+                        <!--<li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
+                        <li>@Html.ActionLink("Profile", "Details", "Profile")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

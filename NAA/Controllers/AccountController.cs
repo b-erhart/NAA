@@ -91,7 +91,7 @@ namespace NAA.Controllers
                         return RedirectToAction("Create", "Profile");
                     }
                     //return RedirectToLocal(returnUrl);
-                    return RedirectToAction("Index", "University");
+                    return RedirectToAction("Details", "Profile");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -415,6 +415,7 @@ namespace NAA.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["UserId"] = null;
             return RedirectToAction("Index", "Home");
         }
 

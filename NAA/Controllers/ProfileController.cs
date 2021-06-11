@@ -18,22 +18,17 @@ namespace NAA.Controllers
             userService = new UserService();
         }
 
-        // GET: Profile
-        public ActionResult Index()
+        public ActionResult Details()
         {
-            return View();
-        }
-
-        // GET: Profile/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            User user = userService.GetUser((string)Session["UserId"]);
+            return View(user);
         }
 
         // GET: Profile/Create
         public ActionResult Create()
         {
             User user = userService.GetUser((string)Session["UserId"]);
+            ViewBag.NoNavigation = "yes";
             return View(user);
         }
 
@@ -56,7 +51,8 @@ namespace NAA.Controllers
 
                 userService.UpdateUser(dbUser);
 
-                return RedirectToAction("Index", "University");
+                ViewBag.NoNavigation = null;
+                return RedirectToAction("Details", "Profile");
             }
             catch
             {
@@ -91,7 +87,7 @@ namespace NAA.Controllers
 
                 userService.UpdateUser(dbUser);
 
-                return RedirectToAction("Index", "University");
+                return RedirectToAction("Details", "Profile");
             }
             catch
             {
