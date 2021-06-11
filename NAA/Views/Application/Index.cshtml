@@ -54,17 +54,17 @@
             @Html.DisplayFor(modelItem => item.Offer)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Firm)
+        </td>
+        <td>
             @if (!string.IsNullOrEmpty(item.Offer) && !item.Offer.Equals("R") && !item.Offer.Equals("P"))
             {
                 @Html.ActionLink("Confirm", "ConfirmApplication", new { applicationId = item.ApplicationId })
             }
             else if (string.IsNullOrEmpty(item.Offer))
             {
-            @Html.ActionLink("Delete", "DeleteApplication", new { applicationId = item.ApplicationId })
+                @Html.ActionLink("Delete", "DeleteApplication", new { applicationId = item.ApplicationId })
             }
-
-        </td>
-        <td>
         </td>
     </tr>
 }
