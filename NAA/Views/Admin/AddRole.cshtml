@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "AddRole";
+}
+
+<h2>Add Role</h2>
+
+@using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+        <div>Role Name</div>
+        <p>@Html.TextBox("RoleName")</p>
+        <input type="submit"value="Save" />
+            }

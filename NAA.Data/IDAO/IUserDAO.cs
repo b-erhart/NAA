@@ -19,5 +19,6 @@ namespace NAA.Data.IDAO
         void UpdateUser(User user, NAAContext context);
         IList<Application> GetApplications(NAAContext context, User user);
         void RemoveApplicationFromCollection(NAAContext context, string userId, Application application);
+        void DeleteUser(NAAContext context, string userId);
     }
 }

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "ManageUserRoles";
+}
+
+<h2>Manage User Roles</h2>
+
+@using (Html.BeginForm("ManageUserRoles", "Admin"))
+            {
+                @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true);
+}
