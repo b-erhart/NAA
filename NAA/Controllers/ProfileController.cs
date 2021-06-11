@@ -65,20 +65,33 @@ namespace NAA.Controllers
         }
 
         // GET: Profile/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
-            return View();
+            User user = userService.GetUser((string)Session["UserId"]);
+            return View(user);
         }
 
         // POST: Profile/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(User user)
         {
             try
             {
-                // TODO: Add update logic here
+                User dbUser = userService.GetUser((string)Session["UserId"]);
 
-                return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(user.Address) || string.IsNullOrEmpty(user.Phone) || string.IsNullOrEmpty(user.Email))
+                {
+                    Session["ErrorMessage"] = "Address, Phone and Email are mandatory fields.";
+                    return RedirectToAction("Edit");
+                }
+
+                dbUser.Address = user.Address;
+                dbUser.Phone = user.Phone;
+                dbUser.Email = user.Email;
+
+                userService.UpdateUser(dbUser);
+
+                return RedirectToAction("Index", "University");
             }
             catch
             {

@@ -90,7 +90,8 @@ namespace NAA.Controllers
                     {
                         return RedirectToAction("Create", "Profile");
                     }
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "University");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
