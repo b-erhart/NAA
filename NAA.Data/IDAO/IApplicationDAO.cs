@@ -15,5 +15,7 @@ namespace NAA.Data.IDAO
         void DeleteApplication(NAAContext context, Application application);
 
         Application GetApplication(NAAContext context, int applicationId);
+
+        void ConfirmApplication(NAAContext context, int applicationId);
     }
 }

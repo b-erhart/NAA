@@ -37,10 +37,9 @@ namespace NAA.Services.Service
         {
             using (var context = new NAAContext())
             {
-                applicationDAO.DeleteApplication(context, application);
                 userDAO.RemoveApplicationFromCollection(context,userId, application);
                 universityDAO.RemoveFromCollection(context, application);
-
+                applicationDAO.DeleteApplication(context, application);
                 context.SaveChanges();
             }
         }
@@ -50,6 +49,15 @@ namespace NAA.Services.Service
             using (var context = new NAAContext())
             {
                 return applicationDAO.GetApplication(context, applicationId);
+            }
+        }
+
+        public void ConfirmApplication(int applicationId)
+        {
+            using (var context = new NAAContext())
+            {
+                applicationDAO.ConfirmApplication(context, applicationId);
+                context.SaveChanges();
             }
         }
     }

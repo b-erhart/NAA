@@ -15,5 +15,7 @@ namespace NAA.Services.IService
         void DeleteApplication(Application application, string userId);
 
         Application GetApplication(int applicationId);
+
+        void ConfirmApplication(int applicationId);
     }
 }
