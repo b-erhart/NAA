@@ -28,7 +28,7 @@
                         <!--<li>@Html.ActionLink("About", "About", "Home")</li>-->
                         <!--<li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
                         <li>@Html.ActionLink("Profile", "Details", "Profile")</li>
-                        @if(Session["Roles"] != null && ((IList<string>)Session["Roles"]).Contains("Admin"))
+                        if(Session["Roles"] != null && ((IList<string>)Session["Roles"]).Contains("Admin"))
                         {
                             <li>@Html.ActionLink("Admin Dashboard", "Dashboard", "Admin")</li>
                         }
