@@ -13,11 +13,11 @@ namespace NAA
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
+            /*routes.MapRoute(
                 name: "Universities",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "University", action = "Index", id = UrlParameter.Optional }
-            );
+            );*/
 
             routes.MapRoute(
                 name: "Default",
