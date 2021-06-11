@@ -19,9 +19,9 @@ namespace NAA.Controllers
         public ActionResult Index(string name, int universityId)
         {
             if (name.Equals("Sheffield"))
-                return RedirectToAction("CoursesSheffieldHallam", new { universityId = universityId });
-            else if (name.Equals("Sheffield Hallam"))
                 return RedirectToAction("CoursesSheffield", new { universityId = universityId });
+            else if (name.Equals("Sheffield Hallam"))
+                return RedirectToAction("CoursesSheffieldHallam", new { universityId = universityId });
             return RedirectToAction("Index", "University");
         }
         public ActionResult CoursesSheffieldHallam(int universityId)

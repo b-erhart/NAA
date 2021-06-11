@@ -140,7 +140,7 @@ namespace NAA.Controllers
             {
                 applicationService.ConfirmApplication(application.ApplicationId);
 
-                return RedirectToAction("Index", "University");
+                return RedirectToAction("Index", "Application");
             }
             catch
             {

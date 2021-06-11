@@ -22,21 +22,22 @@ namespace NAA.Controllers
             context = new ApplicationDbContext();
             userService = new UserService();
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Dashboard()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult GetUsers()
         {
             return View(userService.GetUsers());
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteUser(String userId)
         {
             return View(userService.GetUser(userId));
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult DeleteUser(User user)
         {
@@ -47,20 +48,21 @@ namespace NAA.Controllers
                 userService.DeleteUser(user.UserId);
                 return RedirectToAction("GetUsers");
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult AddRole()
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddRole(FormCollection collection)
         {
                 IdentityRole role = new IdentityRole(collection["RoleName"]);
                 context.Roles.Add(role);
                 context.SaveChanges();
-                return RedirectToAction("GetUsers");
+                return RedirectToAction("Dashboard");
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult ManageUserRoles()
         {
             var userList = context.Users.OrderBy(
@@ -82,7 +84,7 @@ namespace NAA.Controllers
             ViewBag.Roles = roleList;
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult ManageUserRoles(string userName, string roleName)
         {
@@ -108,7 +110,7 @@ namespace NAA.Controllers
                     Text = uu.UserName
                 }).ToList();
             ViewBag.Users = userList;
-            return View("ManageUserRoles");
+            return View("Dashboard");
         }
 
     }
