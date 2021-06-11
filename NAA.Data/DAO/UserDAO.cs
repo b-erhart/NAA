@@ -58,5 +58,11 @@ namespace NAA.Data.DAO
         {
             context.Users.Find(userId).Applications.Remove(application);
         }
+
+        public void DeleteUser(NAAContext context, string userId)
+        {
+            User user = GetUser(userId, context);
+            context.Users.Remove(user);
+        }
     }
 }

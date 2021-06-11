@@ -14,9 +14,11 @@ namespace NAA.Services.Service
     public class UserService : IUserService
     {
         private IUserDAO userDAO;
+        private IApplicationDAO applicationDAO;
         public UserService()
         {
             userDAO = new UserDAO();
+            applicationDAO = new ApplicationDAO();
         }
         public IList<User> GetUsers()
         {
@@ -70,6 +72,20 @@ namespace NAA.Services.Service
             using (var context = new NAAContext())
             {
                 return userDAO.GetApplications(context, user);
+            }
+        }
+
+        public void DeleteUser(string userId)
+        {
+            using (var context = new NAAContext())
+            {
+                User user = GetUser(userId);
+                foreach (var item in user.Applications)
+                {
+                    applicationDAO.DeleteApplication(context, item);
+                }
+                userDAO.DeleteUser(context, userId);
+                context.SaveChanges();
             }
         }
     }

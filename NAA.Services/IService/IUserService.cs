@@ -15,5 +15,6 @@ namespace NAA.Services.IService
         void AddUser(User user);
         void UpdateUser(User user);
         IList<Application> GetApplications(User user);
+        void DeleteUser(string userId);
     }
 }
